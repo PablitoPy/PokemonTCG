@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Row, Col, Space, Tooltip, Button } from 'antd';
-import { EditFilled, DeleteFilled, PlusOutlined } from '@ant-design/icons';
-import moment from 'moment';
 import axios from 'axios';
 
 const dummyPokemons = [
@@ -31,9 +29,9 @@ function PokemonList (props) {
     const [pokemons, setPokemons] = useState([]);
 
     const getPokemons = () => {        
-        axios.get('https://api.pokemontcg.io/v1/cards?subtype=Basic')
+        axios.get(`https://api.pokemontcg.io/v1/cards?subtype=Basic${props.match.params.id}`)
             .then(res => {
-                setPokemons(res.data);
+                setPokemons(res.data.cards);
             })
             .catch(err => {
                 console.log(err);
@@ -44,17 +42,7 @@ function PokemonList (props) {
         getPokemons();
     }, [])
 
-    const deletePokemon = id => {
-        axios.delete(`/primer-trabajo-grupal/rest/productos/${id}`)
-            .then(res => {
-                alert(`Pokemon con ID: ${id} borrada correctamente`);
-                getPokemons();
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-
+    
     const columns = [
         {
             title: 'ID',
@@ -75,49 +63,31 @@ function PokemonList (props) {
         {
             title: 'Image URL',
             dataIndex: 'imageUrl',
+            key: 'imageUrl',
+        },
+        {
+            title: 'Image URL High Resolution',
+            dataIndex: 'imageUrlHiRes',
             key: 'imageUrlHiRes',
-          },
+        },
+        {
+            title: 'Image URL High Resolution',
+            dataIndex: 'imageUrlHiRes',
+            key: 'imageUrlHiRes',
+        },
+
         {
           title: 'Types',
           key: 'types',
           dataIndex: 'types',
         },
-        {
-          title: 'Actions',
-          key: 'action',
-          render: (text, record) => (
-            <Space size="middle">
-                <Tooltip title="Edit">
-                    <Button 
-                        type="primary" 
-                        shape="circle" 
-                        onClick={() => props.history.push(`${props.match.url}/edit/${record.id}`)} 
-                        icon={<EditFilled />} />
-                </Tooltip>
-                <Tooltip title="Delete">
-                    <Button 
-                        type="danger" 
-                        shape="circle" 
-                        onClick={() => deletePokemon(record.id)} 
-                        icon={<DeleteFilled />} />
-                </Tooltip>
-            </Space>
-          ),
-        }
-    ];
+           ];
 
     return (
         <div>
             <Row style={{ padding: 20 }}>
                 <Col span={22}></Col>
-                <Col span={2}>
-                <Tooltip title="New">
-                    <Button 
-                        type="primary" 
-                        shape="round" 
-                        onClick={() => props.history.push(`${props.match.url}/new`)}
-                        icon={<PlusOutlined />}>New Pokemon</Button>
-                </Tooltip>
+                <Col span={2}>                
                 </Col>
             </Row>
             <Table pagination={{ defaultCurrent:1, pageSize: 5, total:pokemons.length }} columns={columns} dataSource={pokemons} />

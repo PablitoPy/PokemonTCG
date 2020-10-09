@@ -1,8 +1,7 @@
 {
   "name": "test-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080/",
-  "private": true,
+   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@testing-library/jest-dom": "^4.2.4",

@@ -4,9 +4,7 @@ import { Layout, Menu, Carousel, Row, Col } from 'antd';
 import "antd/dist/antd.css";
 import PokemonList from './components/PokemonList';
 import PokemonCat from './PokemonCat';
-import PokemonForm from './components/PokemonForm';
 import Home from './components/Home';
-import About from './components/About';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { AppstoreOutlined, DingdingOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, MailOutlined } from '@ant-design/icons';
 
@@ -27,7 +25,7 @@ function AppMenu() {
     // Definicion del menu principal
     <Menu onClick={(value) => setCurrent(value)} selectedKeys={[current]} mode="horizontal">
       <Menu.Item key="home" icon={<AppstoreOutlined />}>
-        <Link to="/">Principal</Link>
+        <Link to="/">Pokemons</Link>
       </Menu.Item>
       <Menu.Item key="pokemons" icon={<AppstoreOutlined />}>
         <Link to="/catalogo">Catálogo</Link>
@@ -53,35 +51,34 @@ function App() {
     <Router>
       <Layout>
       <Header style={{ color: 'white', 
-          height: 140, fontSize: 30, textAlign: 'center', background: 'pink' }}>  
-                    <img src="/foreverYoung.png" width={230} />
-          {/* <div>Forever Young</div> */}
-
+          height: 140, fontSize: 30, textAlign: 'center', background: 'green' }}>  
+                    <img src="https://toucantoco.com/blog/wp-content/uploads/2016/07/Capture-d%E2%80%99e%CC%81cran-2016-07-19-a%CC%80-15.27.31.png" width={230} />
                     </Header>
 
-        <Content>           
+        <Content>
+        <PokemonCat/> 
         </Content>
 
         <Footer style={{ textAlign: 'center' }}>
         <Row>
                     <Col span={8}>
                         <div id="test6">
-                            <FacebookOutlined /> Forever Young
+                            <FacebookOutlined /> Pokedex
                 <br></br>
-                            <InstagramOutlined /> @foreveryoungpy
+                            <InstagramOutlined /> @Pokedex
 
                         </div>
                       
 
                     </Col>
                     <Col span={8}>
-                    <DingdingOutlined />Webpage designed by KaPaKaFre
+                    <DingdingOutlined />Webpage designed by the Pokemon Company
                     </Col>
                     <Col span={8}>
                         <div id="test7">
-                            <TwitterOutlined /> @foreveryoungpy
+                            <TwitterOutlined /> @PokemonCompany
                  <br></br>
-                            <MailOutlined />contactos@foreveryoung.com
+                            <MailOutlined />contact@pokemon.com
                  </div>
                     </Col>
                 </Row>
@@ -90,6 +87,7 @@ function App() {
         </Footer>
       </Layout>
     </Router>
+    
 
   );
 }
