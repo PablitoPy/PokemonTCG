@@ -66,7 +66,18 @@ Footer {
   text-align: center;
 }
 
-h3, h4, #test9 {
+ h4, #test9 {
   height: '160px',
   
 }
+h3 {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 4vmin);
+  color: white;
+}
+

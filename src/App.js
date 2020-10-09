@@ -51,11 +51,12 @@ function App() {
     <Router>
       <Layout>
       <Header style={{ color: 'white', 
-          height: 140, fontSize: 30, textAlign: 'center', background: 'green' }}>  
+          height: 140, fontSize: 30, textAlign: 'center', background: 'red' }}>  
                     <img src="https://toucantoco.com/blog/wp-content/uploads/2016/07/Capture-d%E2%80%99e%CC%81cran-2016-07-19-a%CC%80-15.27.31.png" width={230} />
                     </Header>
 
         <Content>
+        <h3> THE POKEDEX</h3>
         <PokemonCat/> 
         </Content>
 

@@ -43,7 +43,7 @@ function PokemonCat(props) {
                                 <Image width src={pokemon.imageUrl} />
                                 <br />                             
                                 <p>
-                                    Pokedex #: {pokemon.nationalPokedexNumber}
+                                    Pokedex #: {pokemon.nationalPokedexNumber} 
                                 </p>
                                 <p>
                                     Supertype: {pokemon.supertype}
